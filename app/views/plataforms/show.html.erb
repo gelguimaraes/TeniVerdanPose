@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @plataform.id %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @plataform.nome %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @plataform.image %>
+</p>
+
+<%= link_to 'Edit', edit_plataform_path(@plataform) %> |
+<%= link_to 'Back', plataforms_path %>

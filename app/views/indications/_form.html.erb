@@ -1,0 +1,37 @@
+<%= form_with(model: indication, local: true) do |form| %>
+  <% if indication.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(indication.errors.count, "error") %> prohibited this indication from being saved:</h2>
+
+      <ul>
+      <% indication.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :id %>
+    <%= form.number_field :id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%= form.text_field :movie_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plataform_id %>
+    <%= form.text_field :plataform_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

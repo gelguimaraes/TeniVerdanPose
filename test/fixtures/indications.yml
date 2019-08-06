@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  user: one
+  movie: one
+  plataform: one
+
+two:
+  id: 1
+  user: two
+  movie: two
+  plataform: two
