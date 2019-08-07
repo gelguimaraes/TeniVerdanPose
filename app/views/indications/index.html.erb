@@ -15,7 +15,7 @@
   <tbody>
     <% @indications.each do |indication| %>
       <tr>
-        <td>Indicado por: <%= indication.user.nome %></td>
+        <td>Indicado por: <%= indication.user_indicator.nome %></td>
         <td><%= indication.movie.titulo %></td>
         <td><%= indication.plataform.nome %></td>
         <td><%= link_to 'Show', indication %></td>

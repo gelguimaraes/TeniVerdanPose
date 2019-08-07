@@ -13,14 +13,16 @@
 ActiveRecord::Schema.define(version: 2019_08_05_202830) do
 
   create_table "indications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "movie_id"
     t.bigint "plataform_id"
+    t.bigint "user_indicator_id"
+    t.bigint "user_indicated_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_indications_on_movie_id"
     t.index ["plataform_id"], name: "index_indications_on_plataform_id"
-    t.index ["user_id"], name: "index_indications_on_user_id"
+    t.index ["user_indicated_id"], name: "index_indications_on_user_indicated_id"
+    t.index ["user_indicator_id"], name: "index_indications_on_user_indicator_id"
   end
 
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,5 +50,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_202830) do
 
   add_foreign_key "indications", "movies"
   add_foreign_key "indications", "plataforms"
-  add_foreign_key "indications", "users"
+  add_foreign_key "indications", "users", column: "user_indicated_id"
+  add_foreign_key "indications", "users", column: "user_indicator_id"
 end

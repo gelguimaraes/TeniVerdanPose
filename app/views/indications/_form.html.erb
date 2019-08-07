@@ -10,18 +10,19 @@
       </ul>
     </div>
   <% end %>
+  <%= hidden_field(:indication, :user_indicator_id, :value => session[:user_id]) %>
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, :id=>"search_user" %>
+    <%= form.label :user_indicated_id, :value => "Amigo indicado"  %>
+    <%= form.text_field :user_indicated_id, :id=>"search_user" %>
   </div>
 
   <div class="field">
-    <%= form.label :movie_id %>
+    <%= form.label :movie_id, :value => "Filme indicado" %>
     <%= form.text_field :movie_id, :id=>"search_movie"%>
   </div>
 
   <div class="field">
-    <%= form.label :plataform_id %>
+    <%= form.label :plataform_id, :value =>"Plataforma" %>
     <%= form.text_field :plataform_id, :id=>"search_plataform" %>
   </div>
 

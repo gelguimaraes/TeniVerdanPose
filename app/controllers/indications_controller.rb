@@ -28,7 +28,7 @@ class IndicationsController < ApplicationController
 
     respond_to do |format|
       if @indication.save
-        format.html { redirect_to @indication, notice: 'Indication was successfully created.' }
+        format.html { redirect_to @indication, notice: 'Parabéns pela Indicação!' }
         format.json { render :show, status: :created, location: @indication }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class IndicationsController < ApplicationController
   def update
     respond_to do |format|
       if @indication.update(indication_params)
-        format.html { redirect_to @indication, notice: 'Indication was successfully updated.' }
+        format.html { redirect_to @indication, notice: 'Parabéns pela Indicação!' }
         format.json { render :show, status: :ok, location: @indication }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class IndicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indication_params
-      params.require(:indication).permit(:id, :user_id, :movie_id, :plataform_id)
+      params.require(:indication).permit(:id, :user_indicator_id, :user_indicated_id, :movie_id, :plataform_id)
     end
 end
