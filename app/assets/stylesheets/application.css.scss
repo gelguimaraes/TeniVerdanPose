@@ -1,0 +1,33 @@
+@import "bootstrap";
+@import "select2";
+@import "font-awesome";
+/*
+ *= require rails_bootstrap_forms
+ *= require select2-bootstrap
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #28a745;
+}
+
+a:hover {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.dropdown-toggle {
+  color: white;
+}
+
+.dropdown-toggle:hover {
+  color: white;
+  text-decoration: none;
+}
+.select2-container{
+  width: 250px;
+}

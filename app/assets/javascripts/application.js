@@ -17,4 +17,57 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require select2
+//= require select2_locale_pt-BR
 //= require_tree .
+
+document.addEventListener("turbolinks:load", function(){
+    if ($('#search_user')) {
+        $('#search_user').select2({
+            theme: 'bootstrap',
+            allowClear: true,
+            minimumInputLength: 3,
+            dataType: 'json',
+            ajax: {
+                url: '/usersearch',
+                delay: 250,
+                data: function (search) {
+                    return {
+                        busca: search,
+                    };
+                },
+                results: function(data) {
+                    return {
+                        results: $.map( data, function(user, i) {
+                            return { id: user.id, text: user.nome}
+                        } )
+                    }
+                },
+            }
+        });
+    }
+    if ($('#search_plataform')) {
+        $('#search_plataform').select2({
+            theme: 'bootstrap',
+            allowClear: true,
+            minimumInputLength: 3,
+            dataType: 'json',
+            ajax: {
+                url: '/plataformsearch',
+                delay: 250,
+                data: function (search) {
+                    return {
+                        busca: search,
+                    };
+                },
+                results: function(data) {
+                    return {
+                        results: $.map( data, function(plataform, i) {
+                            return { id: plataform.id, text: plataform.nome}
+                        } )
+                    }
+                },
+            }
+        });
+    }
+});

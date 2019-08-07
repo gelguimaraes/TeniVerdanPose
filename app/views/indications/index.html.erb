@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
       <th>User</th>
       <th>Movie</th>
       <th>Plataform</th>
@@ -16,10 +15,9 @@
   <tbody>
     <% @indications.each do |indication| %>
       <tr>
-        <td><%= indication.id %></td>
-        <td><%= indication.user %></td>
-        <td><%= indication.movie %></td>
-        <td><%= indication.plataform %></td>
+        <td>Indicado por: <%= indication.user.nome %></td>
+        <td><%= indication.movie.titulo %></td>
+        <td><%= indication.plataform.nome %></td>
         <td><%= link_to 'Show', indication %></td>
         <td><%= link_to 'Edit', edit_indication_path(indication) %></td>
         <td><%= link_to 'Destroy', indication, method: :delete, data: { confirm: 'Are you sure?' } %></td>

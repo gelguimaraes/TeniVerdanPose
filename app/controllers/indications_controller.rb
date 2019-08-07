@@ -1,5 +1,5 @@
 class IndicationsController < ApplicationController
-  before_action :set_indication, only: [:show, :edit, :update, :destroy]
+  before_action  :set_indication, only: [:show, :edit, :update, :destroy]
 
   # GET /indications
   # GET /indications.json

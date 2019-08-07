@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:create, :new]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+
+  def search
+      users = User.where("nome LIKE ?", "%#{params[:busca]}%")
+      render json: users.map{|v| v.serializable_hash(only: [:id, :nome]) }
+  end
 
   # GET /users
   # GET /users.json
@@ -10,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
   end
 
   # GET /users/new

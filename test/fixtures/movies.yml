@@ -3,9 +3,9 @@
 one:
   id: 1
   titulo: MyString
-  imdb: 1
+  imdb: MyString
 
 two:
   id: 1
   titulo: MyString
-  imdb: 1
+  imdb: MyString

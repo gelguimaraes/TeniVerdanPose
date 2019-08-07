@@ -10,25 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :id %>
-    <%= form.number_field :id %>
-  </div>
-
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, :id=>"search_user" %>
   </div>
 
   <div class="field">
     <%= form.label :movie_id %>
-    <%= form.text_field :movie_id %>
+    <%= form.text_field :movie_id, :id=>"search_movie"%>
   </div>
 
   <div class="field">
     <%= form.label :plataform_id %>
-    <%= form.text_field :plataform_id %>
+    <%= form.text_field :plataform_id, :id=>"search_plataform" %>
   </div>
 
   <div class="actions">

@@ -1,6 +1,12 @@
 class PlataformsController < ApplicationController
   before_action :set_plataform, only: [:show, :edit, :update, :destroy]
 
+
+  def search
+    plataforms = Plataform.where("nome LIKE ?", "%#{params[:busca]}%")
+    render json: plataforms.map{|v| v.serializable_hash(only: [:id, :nome]) }
+  end
+
   # GET /plataforms
   # GET /plataforms.json
   def index
