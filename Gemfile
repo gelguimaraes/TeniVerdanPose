@@ -64,3 +64,5 @@ gem "bootstrap_form", ">= 4.2.0"
 gem 'cocoon'
 gem "font-awesome-rails"
 gem 'select2-rails', '= 3.5.2'
+gem "httparty"
+gem "json_pure"

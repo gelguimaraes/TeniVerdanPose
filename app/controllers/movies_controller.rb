@@ -1,6 +1,14 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
+  def search
+    imdbs = ImdbService.new
+    movies = imdbs.get_plot_by_title("#{params[:busca]}", "#{params[:year]}")
+    keys_to_extract = ["Title", "imdbID", "Year", "Poster"]
+    render json: [movies.select { |key,_| keys_to_extract.include? key }]
+  end
+
+
   # GET /movies
   # GET /movies.json
   def index

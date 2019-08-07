@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'usersearch', to: 'users#search', as: 'searchuser'
+  get 'usersearch', to: 'users#search', as: 'usersearch'
   get 'plataformsearch', to: 'plataforms#search', as: 'plataformsearch'
-  get 'moviesearch', to: 'movies#search', as: 'moviesearch'
+  get 'moviessearch', to: 'movies#search', as: 'moviessearch'
 end

@@ -70,4 +70,35 @@ document.addEventListener("turbolinks:load", function(){
             }
         });
     }
+
+    if ($('#search_movie')) {
+        $('#search_movie').select2({
+            theme: 'bootstrap',
+            allowClear: true,
+            minimumInputLength: 3,
+            dataType: 'json',
+            ajax: {
+                url: '/moviessearch',
+                delay: 250,
+                data: function (search) {
+                    var search = search .split(/\s+/);
+                    return {
+                        busca: search[0],
+                        year: search[1]
+                    };
+                },
+                results: function(data) {
+                    return {
+                        results: $.map(data, function(movie, i) {
+                                if(movie.Title){
+                                return {
+                                    id: movie.imdbID, text: movie.Title + " (" + movie.Year + ")"
+                                }
+                            }
+                        } )
+                    }
+                },
+            }
+        });
+    }
 });
