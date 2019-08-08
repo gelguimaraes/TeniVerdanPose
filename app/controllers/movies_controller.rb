@@ -1,13 +1,15 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
+
   def search
     imdbs = ImdbService.new
-    movies = imdbs.get_plot_by_title("#{params[:busca]}", "#{params[:year]}")
-    keys_to_extract = ["Title", "imdbID", "Year", "Poster"]
-    render json: [movies.select { |key,_| keys_to_extract.include? key }]
+    objects = imdbs.get_plot_by_title("#{params[:busca]}", "#{params[:year]}")
+    keys_to_extract = ["Title", "imdbID", "Year"]
+    objects_filted = objects.select { |key,_| keys_to_extract.include? key }
+    #objects_filted = objects.select { |key,_| ["Ratings"].include? key }.map{|v| v[1][0].slice("Value")}[0]["Value"]
+    render json: [objects_filted]
   end
-
 
   # GET /movies
   # GET /movies.json
@@ -43,6 +45,7 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+    @movie
   end
 
   # PATCH/PUT /movies/1
@@ -77,6 +80,23 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:id, :titulo, :imdb)
+      params.require(:movie).permit(:id, :titulo, :imdb, :poster, :ano, :nota, :genero)
     end
+
+  public
+  def find_movie_id(imdb)
+    movie = Movie.find_by_imdb(imdb)
+    if movie
+       @movie = movie
+    else
+      imdbs = ImdbService.new
+      json = imdbs.get_plot_by_id(imdb)
+      keys_to_extract = ["Title", "imdbID", "Poster", "Year", "Genrer"]
+      object = json.select { |key, value| keys_to_extract.include? key }
+      ratting = json.select { |key, value| ["Ratings"].include? key }.map{|v| v[1][0].slice("Value")}[0]
+
+      @movie = Movie.create(titulo: object["Title"], imdb: object["imdbID"],
+                   poster: object["Poster"], ano: object["Year"], nota: "10" , genero: object["Genrer"])
+    end
+  end
 end

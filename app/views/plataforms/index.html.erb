@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Nome</th>
       <th>Image</th>
+      <th>Nome</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @plataforms.each do |plataform| %>
       <tr>
-        <td><%= plataform.id %></td>
-        <td><%= plataform.nome %></td>
         <td><%= plataform.image %></td>
+        <td><%= plataform.nome %></td>
         <td><%= link_to 'Show', plataform %></td>
         <td><%= link_to 'Edit', edit_plataform_path(plataform) %></td>
         <td><%= link_to 'Destroy', plataform, method: :delete, data: { confirm: 'Are you sure?' } %></td>

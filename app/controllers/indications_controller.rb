@@ -24,6 +24,9 @@ class IndicationsController < ApplicationController
   # POST /indications
   # POST /indications.json
   def create
+    movie_ontroller = MoviesController.new
+    movie = movie_ontroller.find_movie_id(:imdb)
+    params[:movie_id] ||= movie.id
     @indication = Indication.new(indication_params)
 
     respond_to do |format|

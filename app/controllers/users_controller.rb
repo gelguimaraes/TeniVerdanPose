@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:create, :new]
+  skip_before_action :require_login, only: [:create, :new, :show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'cadastrado com Sucesso!' }
+        format.html { redirect_to @user, notice: 'Cadastrado com Sucesso! Entre com seu Login' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Dados Atualizado!' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
