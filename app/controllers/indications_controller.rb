@@ -25,7 +25,8 @@ class IndicationsController < ApplicationController
   # POST /indications.json
   def create
     movie_ontroller = MoviesController.new
-    movie = movie_ontroller.find_movie_id(:imdb)
+    imdb = params[:imdb]
+    movie = movie_ontroller.find_movie_id(imdb)
     params[:movie_id] ||= movie.id
     @indication = Indication.new(indication_params)
 
@@ -72,6 +73,6 @@ class IndicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indication_params
-      params.require(:indication).permit(:id, :user_indicator_id, :user_indicated_id, :movie_id, :plataform_id)
+      params.require(:indication).permit(:id, :user_indicator_id, :user_indicated_id, :movie_id, :plataform_id, :imdb)
     end
 end
