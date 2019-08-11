@@ -9,7 +9,7 @@
       <td><img src="<%= image_path('user2.png')%>" class="imageList"/><p>Indicado para <%= movie.indications.first.user_indicated.nome %></p></td>
       <td><img src="<%= (movie.poster != 'N/A') ? image_path(movie.poster) : image_path('movie.png')%>" class="imageList"/><p><%= movie.titulo %> (<%= movie.ano %>)</p></td>
       <td><img src="<%= image_path(movie.indications.first.plataform.image)%>" class="imageList"/><p><%= movie.indications.first.plataform.nome %></p></td>
-      <td><%= link_to '<i class="fa fa-search iconList"></i>'.html_safe, movie , class: 'iconWithLink' %> <%= link_to '<i class="fa fa-trash-o iconList""></i>'.html_safe, movie.indications.first, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'iconWithLink' %></td>
+      <td style="width: 150px"><%= link_to '<i class="fa fa-search iconList"></i>'.html_safe, movie , class: 'iconWithLink' %> <%= link_to '<i class="fa fa-trash-o iconList""></i>'.html_safe, movie.indications.first, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'iconWithLink' %></td>
     </tr>
   <% end %>
   <% else %>

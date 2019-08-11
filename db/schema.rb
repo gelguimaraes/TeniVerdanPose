@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_08_05_202830) do
 
-  create_table "indications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "indications", force: :cascade do |t|
     t.bigint "movie_id"
     t.bigint "plataform_id"
     t.bigint "user_indicator_id"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_202830) do
     t.index ["user_indicator_id"], name: "index_indications_on_user_indicator_id"
   end
 
-  create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.string "titulo"
     t.string "imdb"
     t.string "poster"
@@ -36,14 +39,14 @@ ActiveRecord::Schema.define(version: 2019_08_05_202830) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "plataforms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "plataforms", force: :cascade do |t|
     t.string "nome"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "nome"
     t.string "email"
     t.string "password_digest"

@@ -6,8 +6,8 @@ ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-#gem 'pg', '~> 0.18.4'
+#gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -64,7 +64,6 @@ gem "bootstrap_form", ">= 4.2.0"
 gem 'cocoon'
 gem "font-awesome-rails"
 gem 'glyphicons-rails', '~> 0.1.2'
-#gem 'select2-rails', '= 3.5.2'
 gem 'select2-rails', '= 3.5.10'
 gem "httparty"
 gem "json_pure"
