@@ -24,6 +24,7 @@
 document.addEventListener("turbolinks:load", function(){
     if ($('#search_user')) {
         $('#search_user').select2({
+            placeholder: 'Selecione um amigo',
             theme: 'bootstrap',
             allowClear: true,
             minimumInputLength: 3,
@@ -48,6 +49,7 @@ document.addEventListener("turbolinks:load", function(){
     }
     if ($('#search_plataform')) {
         $('#search_plataform').select2({
+            placeholder: 'Selecione uma plataforma',
             theme: 'bootstrap',
             allowClear: true,
             minimumInputLength: 3,
@@ -74,6 +76,7 @@ document.addEventListener("turbolinks:load", function(){
     if ($('#search_movie')) {
         $('#search_movie').select2({
             theme: 'bootstrap',
+            placeholder: 'Selecione um filme',
             allowClear: true,
             minimumInputLength: 3,
             dataType: 'json',
@@ -81,10 +84,22 @@ document.addEventListener("turbolinks:load", function(){
                 url: '/moviessearch',
                 delay: 250,
                 data: function (search) {
+
                     var search = search .split(/\s+/);
+                    var string = "", int = ""
+                    for (let s of search){
+                        if(isNaN(s)){
+                            string += s + ' '
+                        }else{
+                            if(s.length === 4)
+                                int = s
+                            else
+                                string += s + ' '
+                        }
+                    }
                     return {
-                        busca: search[0],
-                        year: search[1]
+                        busca: string,
+                        year: int
                     };
                 },
                 results: function(data) {

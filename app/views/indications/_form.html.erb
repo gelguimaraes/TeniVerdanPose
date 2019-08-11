@@ -1,8 +1,7 @@
 <%= form_with(model: indication, local: true) do |form| %>
   <% if indication.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(indication.errors.count, "error") %> prohibited this indication from being saved:</h2>
-
+      <h2><i class="fa fa-times"></i><%= pluralize(indication.errors.count, "erro(s)") %> encontrado(s):</h2>
       <ul>
       <% indication.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,22 +10,22 @@
     </div>
   <% end %>
   <%= hidden_field(:indication, :user_indicator_id, :value => session[:user_id]) %>
-  <div class="field">
+  <div class="form-group">
     <%= form.label :user_indicated_id, :value => "Amigo indicado"  %>
     <%= form.text_field :user_indicated_id, :id=>"search_user" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :imdb, :value => "Filme indicado" %>
-    <%= form.text_field :imdb, :id=>"search_movie", :value=> params[:imdb]%>
+    <%= form.text_field :imdb, :id=>"search_movie"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :plataform_id, :value =>"Plataforma" %>
-    <%= form.text_field :plataform_id, :id=>"search_plataform" %>
+    <%= form.text_field :plataform_id, :id=>"search_plataform"%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit :class =>"btn btn-secondary btn-block", :value=>"Indicar Filme" %>
   </div>
 <% end %>

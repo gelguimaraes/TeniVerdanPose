@@ -1,31 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Indications</h1>
+<h1>Filmes indicados</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Movie</th>
-      <th>Plataform</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
+<table class="table table-striped">
   <tbody>
+  <% if @indications.present? %>
     <% @indications.each do |indication| %>
       <tr>
-        <td>Indicado por: <%= indication.user_indicator.nome %></td>
-        <td><%= indication.movie.titulo %></td>
-        <td><%= indication.plataform.nome %></td>
-        <td><%= link_to 'Show', indication %></td>
-        <td><%= link_to 'Edit', edit_indication_path(indication) %></td>
-        <td><%= link_to 'Destroy', indication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><img src="<%= image_path('user.png')%>" class="imageList"/><p>Indicado por <%= indication.user_indicator.nome %></p></td>
+        <td><img src="<%= (indication.movie.poster != 'N/A') ? image_path(indication.movie.poster) : image_path('movie.png')%>" class="imageList"/><p><%= indication.movie.titulo %> (<%= indication.movie.ano %>)</p></td>
+        <td><img src="<%= image_path(indication.plataform.image)%>" class="imageList"/><p><%= indication.plataform.nome %></p></td>
+        <td><%= link_to '<i class="fa fa-search iconList"></i>'.html_safe, indication.movie, class: 'iconWithLink' %></td>
       </tr>
     <% end %>
+  <% else %>
+      <p>Sem Filmes Indicados! :(</p>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Indication', new_indication_path %>

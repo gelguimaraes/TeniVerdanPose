@@ -4,7 +4,7 @@ class IndicationsController < ApplicationController
   # GET /indications
   # GET /indications.json
   def index
-    @indications = Indication.all
+    @indications = Indication.where("user_indicated_id = ?" , session[:user_id]).order("id DESC")
   end
 
   # GET /indications/1
@@ -24,10 +24,13 @@ class IndicationsController < ApplicationController
   # POST /indications
   # POST /indications.json
   def create
+
     movie_ontroller = MoviesController.new
-    imdb = params[:imdb]
+    imdb = params[:indication][:imdb]
     movie = movie_ontroller.find_movie_id(imdb)
-    params[:movie_id] ||= movie.id
+    if movie
+      params[:indication][:movie_id] ||= movie.id
+    end
     @indication = Indication.new(indication_params)
 
     respond_to do |format|
@@ -60,7 +63,7 @@ class IndicationsController < ApplicationController
   def destroy
     @indication.destroy
     respond_to do |format|
-      format.html { redirect_to indications_url, notice: 'Indication was successfully destroyed.' }
+      format.html { redirect_to movies_url, notice: 'Indicação excluída com Sucesso!' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +76,6 @@ class IndicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indication_params
-      params.require(:indication).permit(:id, :user_indicator_id, :user_indicated_id, :movie_id, :plataform_id, :imdb)
+      params.require(:indication).permit(:id, :user_indicator_id, :user_indicated_id, :movie_id, :plataform_id)
     end
 end

@@ -1,17 +1,11 @@
-<p id=”alert”><%= alert %></p>
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class=”field”>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>
-  <div class=”field”>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class=”actions”>
-    <%= submit_tag "Login" %>
-  </div>
+<p id="alert"><%= alert %></p>
+<h1>Novo Acesso</h1>
+
+<%= bootstrap_form_tag url: sessions_path do |f| %>
+  <%= f.email_field :email, icon: "user", placeholder: "Digite seu email...", label: "E-mail"%>
+  <%= f.password_field :password, placeholder: "Digite sua senha..." , label: "Senha" %>
+  <%= f.submit "Entrar", class: 'btn btn-secondary btn-block'  %>
 <% end %>
 
-<%= link_to "Cadastre-se", signup_path %>
+<%= link_to "Não se cadastrou?", signup_path, {:style => 'margin-top: 20px; display: block'} %>
+<%-# link_to 'Voltar ao início', root_path ,{:style => 'margin-top: 20px; display: block'}%>

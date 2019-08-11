@@ -1,12 +1,12 @@
-<div class="jumbotron">
-  <h1 class="display-4"><%= @nome_app %></h1>
-
-  <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Sair", logout_path %>
-  <% else %>
-    <%= link_to "Cadastre-se", signup_path %> or
-    <%= link_to "Entrar", login_path %>
-  <% end %>
-  <p id="notice"><%= notice %></p>
+<div class="boxInicio">
+  <div></div>
+  <p class="textoHome">
+    Grupê dê posérs qualificaduó que achám que entendiem cineman e não acharram un sistemam eficienté para dar suas opiniês qualificadês.
+  </p>
 </div>
+<% if !current_user %>
+<div class="bottom">
+      <%= link_to "Cadastre-se", signup_path %> ou
+      <%= link_to "Entre", login_path %>
+</div>
+<% end %>

@@ -1,23 +1,239 @@
 @import "bootstrap";
 @import "select2";
 @import "font-awesome";
+
 /*
  *= require rails_bootstrap_forms
  *= require select2-bootstrap
  */
 
-* {
+@font-face {
+  font-family: 'komika_axisregular';
+  src: font-url('komikax.woff2') format('woff2'), font-url('komikax.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'caviar_dreamsregular';
+  src: url('caviardreams-webfont.woff2') format('woff2'),
+  url('caviardreams-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+*, p {
   margin: 0;
   padding: 0;
 }
 
+html {
+  height: 96%
+}
+
+body {
+  font-family: 'caviar_dreamsregular';
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+h1 {
+  font-family: 'komika_axisregular';
+  color: #6c757d;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+li{
+  list-style: none;
+  text-align: left;
+}
+
+
+#alert, #notice{
+  margin-bottom: 10px;
+}
+
+#error_explanation, #alert{
+  color: #b10000;
+}
+#notice{
+  color: #90bc11;
+}
+#error_explanation i{
+  margin-right: 5px;
+}
+
 a {
-  color: #28a745;
+  color: #90bc11;
+  padding: 5px 10px;
+  border: 1px solid #90bc11 ;
+  border-radius: 5px;
+  display: inline-block;
+  transition: all 0.15s ease-in-out;
 }
 
 a:hover {
-  color: #28a745;
+  color: #FFF;
   text-decoration: none;
+  background-color: #90bc11;
+}
+
+.iconWithLink{
+  border: none;
+}
+
+.iconWithLink:hover{
+  color:#6c757d;
+  background: none;
+}
+.imageWithLink, .imageWithLink:hover{
+  background: none;
+  border: none;
+}
+
+table {
+  width: 65vmax !important;
+}
+
+label{
+  color: #90bc11;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bg-success {
+  background-color: #90bc11 !important;
+}
+
+.form-control:focus {
+  border-color: #90bc11;
+  box-shadow: 0 0 0 0.2rem rgba(192, 255, 0, 0.25);
+}
+
+.home {
+  background-color: #90bc11;
+  text-align: center;
+  background-image: image_url('pose.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.logo {
+  background-image: image_url('teniverdan.png');
+  background-position: center;
+  width: 450px;
+  height: 100px;
+  background-size: contain;
+  margin-top: 20px;
+  background-repeat: no-repeat;
+  background-color: #ffffff8a;
+  display: block;
+  border: none;
+}
+.logo:hover{
+  background-color: #ffffff8a;
+}
+.logoMenu{
+  background: image_url('teniwhite.png');
+  height: 35px;
+  background-repeat: no-repeat;
+  width: 300px;
+  background-position: center;
+  background-size: contain;
+  margin-right: 25px;
+}
+
+.textoHome {
+  font-family: 'komika_axisregular';
+  font-size: 19px;
+  width: 600px;
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 25px;
+  background-color: #ffffff8a;
+  color: #90bc11;
+}
+.creditos{
+  text-align: center;
+  color: white;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.imageList{
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 10px;
+}
+
+.iconList{
+  font-size: 36px;
+  vertical-align: middle;
+  line-height: 90px;
+  display: inline-block;
+}
+
+.imageView{
+  width: 300px;
+  margin-right: 20px;
+}
+
+.boxInicio {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box {
+  margin: 10vh auto;
+  padding: 2.5%;
+  border-radius: 6px;
+  background-color: #eeeeeee3;
+  max-width: fit-content;
+  box-shadow: 2px 2px 23px -3px #000;
+  min-width: 400px;
+}
+
+.btn{
+  font-family: 'komika_axisregular';
+  font-size: 16px;
+  min-width: 250px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  color: white;
+  background-color: #90bc11;
+  padding: 15px;
+}
+
+.bottom a {
+  font-family: 'komika_axisregular';
+  color: white;
+  font-size: 25px;
+  margin: 5px;
+}
+
+.turbolinks-progress-bar {
+  height: 5px;
+  background-color: #6c757d;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 16px;
+  color: white;
+  transition: all ease 0.2s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: white;
 }
 
 .dropdown-toggle {
@@ -28,6 +244,61 @@ a:hover {
   color: white;
   text-decoration: none;
 }
-.select2-container{
-  width: 250px;
+.dropdown-item:hover, .dropdown-item:focus{
+  border-color: #90bc11;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+  background-color: #90bc11;
+}
+  /* ************* Select2 ***********/
+.select2-container {
+  display: block;
+}
+
+.select2-container .select2-choice .select2-arrow {
+  display: none;
+}
+
+.select2-drop-active, .select2-container-active .select2-choice, .select2-container-active .select2-choices {
+  border-color: #90bc11;
+}
+
+.select2-container .select2-choice {
+  background-image: none;
+  height: 38px;
+}
+
+.select2-container .select2-choice > .select2-chosen {
+  margin-right: 0;
+  height: 38px;
+  line-height: 38px;
+}
+
+.select2-results .select2-highlighted {
+  background: #90bc11;
+}
+
+.select2-container .select2-choice abbr {
+  width: 17px;
+  height: 14px;
+}
+
+.plataforms{
+  display: flex;
+  justify-content: space-around;
+  width: 65vmax !important;;
+  flex-wrap: wrap;
+}
+
+.plataformsBox{
+  width: 120px;
+  margin: 10px;
+  flex: 1 0 30%
+}
+
+.textPlatafoms{
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
 }

@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TeniverdanPose</title>
+    <title>Teni verdan Pose</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
-  <body>
+  <body class="home">
   <% if current_user %>
     <%= render partial: "/layouts/menu"%>
+  <% else %>
+    <a class="logo" href="/"></a>
   <% end %>
+
+  <% if current_page?('/')%>
     <%= yield %>
+  <% else %>
+  <div class="box" >
+    <%= yield %>
+  </div>
+    <% end %>
   </body>
 </html>

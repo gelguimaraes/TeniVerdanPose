@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Dados do Usuário</h1>
 <p>
   <strong>Nome:</strong>
   <%= @user.nome %>
@@ -9,9 +9,9 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
-
+<br>
 <% if !current_user %>
-  <%= link_to 'Fazer Login', login_path %>
+  <%= link_to 'Fazer Login', login_path, class: 'btn-block' %>
 <% end %>
 
-<%= link_to 'inicio', root_path %>
+<%= link_to 'Inicio', root_path, class: 'btn-block' %>

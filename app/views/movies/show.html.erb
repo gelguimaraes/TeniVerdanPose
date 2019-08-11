@@ -1,19 +1,31 @@
+
 <p id="notice"><%= notice %></p>
+<h1>Notas do Filme</h1>
+<table>
+  <tbody align="left">
+  <tr>
+    <td rowspan="6" align="right">
+      <img src="<%= (@movie.poster != 'N/A') ? @movie.poster : image_path('movie.png') %>" class="imageView"/>
+    </td>
+    <td width="500px"><h2><%= @movie.titulo %></h2></td>
+  </tr>
+  <tr>
+    <td><p>Ano: <b><%= @movie.ano %></b></p></td>
+  </tr>
+  <tr>
+    <td><p>Gênero: <b><%= @movie.genero %></b></p></td>
+  </tr>
+  <tr>
+    <td><%= image_tag("star.png")%><span><b><%= @movie.nota %></b></span></td>
+  </tr>
+  <tr>
+    <td><p>Imdb ID: <b><%= @movie.imdb %></b></p></td>
+  </tr>
+  <tr>
+    <td><p>Mais informações: <%= link_to image_tag("imdb.png"), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank', class: 'imageWithLink' %></p></td>
+  </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Id:</strong>
-  <%= @movie.id %>
-</p>
-
-<p>
-  <strong>Titulo:</strong>
-  <%= @movie.titulo %>
-</p>
-
-<p>
-  <strong>Imdb:</strong>
-  <%= @movie.imdb %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%# link_to 'Edit', edit_movie_path(@movie) %>
+<%= link_to 'Voltar', :back %>

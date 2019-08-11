@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Dados da sua Indicação</h1>
 <p>
   <strong>Amigo indicado:</strong>
   <%= @indication.user_indicated.nome%>
 </p>
 
 <p>
-  <strong>Movie:</strong>
-  <%= @indication.movie.titulo %>
+  <strong>Filme: </strong>
+  <%= @indication.movie.titulo %> (<%= @indication.movie.ano%>)
 </p>
 
 <p>
-  <strong>Plataform:</strong>
+  <strong>Plataforma:</strong>
   <%= @indication.plataform.nome%>
 </p>
-
-<%= link_to 'Back', indications_path %>
+<br>
+<%= link_to 'Ver minhas indicações', movies_path, class: 'btn-block' %>

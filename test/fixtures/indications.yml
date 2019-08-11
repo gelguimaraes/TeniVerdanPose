@@ -2,12 +2,14 @@
 
 one:
   id: 1
-  user: one
+  user_indicator: one
+  user_indicated: one
   movie: one
   plataform: one
 
 two:
   id: 1
-  user: two
+  user_indicator: two
+  user_indicated: two
   movie: two
   plataform: two

@@ -1,31 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h1>Minha Indicações</h1>
+<table class="table table-striped">
 
-<h1>Movies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Titulo</th>
-      <th>Imdb</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.id %></td>
-        <td><%= movie.titulo %></td>
-        <td><%= movie.imdb %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% if @movies.present? %>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><img src="<%= image_path('user2.png')%>" class="imageList"/><p>Indicado para <%= movie.indications.first.user_indicated.nome %></p></td>
+      <td><img src="<%= (movie.poster != 'N/A') ? image_path(movie.poster) : image_path('movie.png')%>" class="imageList"/><p><%= movie.titulo %> (<%= movie.ano %>)</p></td>
+      <td><img src="<%= image_path(movie.indications.first.plataform.image)%>" class="imageList"/><p><%= movie.indications.first.plataform.nome %></p></td>
+      <td><%= link_to '<i class="fa fa-search iconList"></i>'.html_safe, movie , class: 'iconWithLink' %> <%= link_to '<i class="fa fa-trash-o iconList""></i>'.html_safe, movie.indications.first, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'iconWithLink' %></td>
+    </tr>
+  <% end %>
+  <% else %>
+    <p>Você ainda não indicou! </p>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Movie', new_movie_path %>
+
+<%= link_to 'Indicar um Filme', new_indication_path, :class => "btn btn-secondary" %>

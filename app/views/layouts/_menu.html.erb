@@ -5,28 +5,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item logoMenu">
+
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= movies_path %>">Filmes que Indiquei</a>
+        <a class="nav-link" href="<%= new_indication_path %>"><i class="fa fa-heart"></i> Indicar um Filme</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= indications_path %>">Minhas Indicações</a>
+        <a class="nav-link" href="<%= indications_path%>"><i class="fa fa-film"></i> Filmes indicados</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<%= movies_path %>"><i class="fa fa-thumbs-o-up"></i> Minhas Indicações</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= plataforms_path %>">Plataformas</a>
+        <a class="nav-link" href="<%= plataforms_path %>"><i class="fa fa-tv"></i> Plataformas</a>
       </li>
 
     </ul>
     <ul class="nav navbar-nav ml-auto">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-user"></i> <%= session[:user_name]%>
+          <i class="fa fa-user-o"></i> <%= session[:user_name] %>
           <span style="font-size: .6em;" class="glyphicon glyphicon-menu-down btn-xs" aria-hidden="true"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-          <li><a class="dropdown-item" href="<%= edit_user_path(session[:user_id]) %>"><i class="fa fa-user-circle"></i> Configurações da Conta</a></li>
+          <li><a class="dropdown-item" href="<%= edit_user_path(session[:user_id]) %>"><i class="fa fa-user-circle"></i>
+            Configurações da Conta</a></li>
           <li><a class="dropdown-item" href="<%= logout_path %>"><i class="fa fa-sign-out"></i> Sair</a></li>
         </ul>
       </li>

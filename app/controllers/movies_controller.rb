@@ -7,14 +7,13 @@ class MoviesController < ApplicationController
     objects = imdbs.get_plot_by_title("#{params[:busca]}", "#{params[:year]}")
     keys_to_extract = ["Title", "imdbID", "Year"]
     objects_filted = objects.select { |key,_| keys_to_extract.include? key }
-    #objects_filted = objects.select { |key,_| ["Ratings"].include? key }.map{|v| v[1][0].slice("Value")}[0]["Value"]
     render json: [objects_filted]
   end
 
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.joins(:indications).where("user_indicator_id = ?" , session[:user_id]).order("id DESC")
   end
 
   # GET /movies/1
@@ -85,18 +84,25 @@ class MoviesController < ApplicationController
 
   public
   def find_movie_id(imdb)
-    movie = Movie.find_by_imdb(imdb)
-    if movie
-       @movie = movie
-    else
-      imdbs = ImdbService.new
-      json = imdbs.get_plot_by_id(imdb)
-      keys_to_extract = ["Title", "imdbID", "Poster", "Year", "Genrer"]
-      object = json.select { |key, value| keys_to_extract.include? key }
-      ratting = json.select { |key, value| ["Ratings"].include? key }.map{|v| v[1][0].slice("Value")}[0]
+      if imdb.present?
+        movie = Movie.find_by_imdb(imdb)
+        if movie
+           @movie = movie
+        else
+          imdbs = ImdbService.new
+          json = imdbs.get_plot_by_id(imdb)
+          keys_to_extract = ["Title", "imdbID", "Poster", "Year", "Genre","imdbRating"]
+          object = json.select { |key, value| keys_to_extract.include? key }
+          jsonRatting = json.select { |key, value| ["Ratings"].include? key }
 
-      @movie = Movie.create(titulo: object["Title"], imdb: object["imdbID"],
-                   poster: object["Poster"], ano: object["Year"], nota: "10" , genero: object["Genrer"])
-    end
+          (object["imdbRating"] == "N/A")? ratting = "Sem Nota" : ratting = object["imdbRating"] + "/10"
+          #ratting = jsonRatting.map{|v| v[1][0].slice("Value")}[0]
+
+          @movie = Movie.create(titulo: object["Title"], imdb: object["imdbID"],
+                       poster: object["Poster"], ano: object["Year"], nota: ratting , genero: object["Genre"])
+        end
+      else
+        @movie = nil
+      end
   end
 end
