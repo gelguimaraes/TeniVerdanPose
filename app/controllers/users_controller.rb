@@ -4,14 +4,14 @@ class UsersController < ApplicationController
 
 
   def search
-      users = User.where("nome LIKE ?", "%#{params[:busca]}%")
-      render json: users.map{|v| v.serializable_hash(only: [:id, :nome]) }
+      users = User.where("nome LIKE ? OR email LIKE?", "%#{params[:busca]}%", "%#{params[:busca]}%" )
+      render json: users.map{|v| v.serializable_hash(only: [:id, :nome, :email]) }
   end
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+   # @users = User.all
   end
 
   # GET /users/1

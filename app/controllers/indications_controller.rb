@@ -24,7 +24,6 @@ class IndicationsController < ApplicationController
   # POST /indications
   # POST /indications.json
   def create
-
     movie_ontroller = MoviesController.new
     imdb = params[:indication][:imdb]
     movie = movie_ontroller.find_movie_id(imdb)
@@ -37,6 +36,10 @@ class IndicationsController < ApplicationController
       if @indication.save
         format.html { redirect_to @indication, notice: 'Parabéns pela Indicação!' }
         format.json { render :show, status: :created, location: @indication }
+        indicated = User.find(params[:indication][:user_indicated_id])
+        indicator = User.find(session[:user_id])
+        movie = Movie.find(movie.id)
+        NewUserEmailMailer.mail_to_indicated(indicator, indicated, movie).deliver
       else
         format.html { render :new }
         format.json { render json: @indication.errors, status: :unprocessable_entity }

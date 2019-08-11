@@ -24,10 +24,11 @@
 document.addEventListener("turbolinks:load", function(){
     if ($('#search_user')) {
         $('#search_user').select2({
-            placeholder: 'Selecione um amigo',
+            placeholder: 'nome ou o email (case sensitive)',
             theme: 'bootstrap',
             allowClear: true,
             minimumInputLength: 3,
+            maximumSelectionLength: 5,
             dataType: 'json',
             ajax: {
                 url: '/usersearch',
@@ -40,7 +41,7 @@ document.addEventListener("turbolinks:load", function(){
                 results: function(data) {
                     return {
                         results: $.map( data, function(user, i) {
-                            return { id: user.id, text: user.nome}
+                            return { id: user.id, text: user.nome +' ('+ user.email + ')'}
                         } )
                     }
                 },
@@ -49,7 +50,7 @@ document.addEventListener("turbolinks:load", function(){
     }
     if ($('#search_plataform')) {
         $('#search_plataform').select2({
-            placeholder: 'Selecione uma plataforma',
+            placeholder: 'nome (case sensitive)',
             theme: 'bootstrap',
             allowClear: true,
             minimumInputLength: 3,
@@ -76,13 +77,13 @@ document.addEventListener("turbolinks:load", function(){
     if ($('#search_movie')) {
         $('#search_movie').select2({
             theme: 'bootstrap',
-            placeholder: 'Selecione um filme',
+            placeholder: 'Ex.: spiderman 2008',
             allowClear: true,
             minimumInputLength: 3,
             dataType: 'json',
             ajax: {
                 url: '/moviessearch',
-                delay: 250,
+                delay: 1000,
                 data: function (search) {
 
                     var search = search .split(/\s+/);

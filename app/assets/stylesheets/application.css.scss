@@ -188,7 +188,7 @@ label{
 
 .box {
   margin: 10vh auto;
-  padding: 2.5%;
+  padding: 30px;
   border-radius: 6px;
   background-color: #eeeeeee3;
   max-width: fit-content;
@@ -271,6 +271,15 @@ label{
   margin-right: 0;
   height: 38px;
   line-height: 38px;
+  max-width: 290px;
+}
+.select2-search input {
+  background-position: 100% -29px;
+  background-size: 80px;
+}
+
+.select2-container.select2-allowclear .select2-choice abbr {
+  margin: 4px -15px;
 }
 
 .select2-results .select2-highlighted {

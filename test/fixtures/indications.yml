@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  user_indicator: one
-  user_indicated: one
-  movie: one
-  plataform: one
+  user_indicator: 1
+  user_indicated: 2
+  movie: 1
+  plataform: 1
 
 two:
-  id: 1
-  user_indicator: two
-  user_indicated: two
-  movie: two
-  plataform: two
+  user_indicator: 2
+  user_indicated: 1
+  movie: 1
+  plataform: 2

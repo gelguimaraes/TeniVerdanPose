@@ -1,0 +1,27 @@
+<h1>Seu amigo <%= @indicator.nome %> te indicou um Filme! </h1>
+
+<table>
+  <tbody align="left">
+  <tr>
+    <td rowspan="6" align="right">
+      <img src="<%= (@movie.poster != 'N/A') ? @movie.poster : image_url('movie.png') %>" class="imageView"/>
+    </td>
+    <td width="500px"><h2>Título: <%= @movie.titulo %></h2></td>
+  </tr>
+  <tr>
+    <td><p>Ano: <b><%= @movie.ano %></b></p></td>
+  </tr>
+  <tr>
+    <td><p>Gênero: <b><%= @movie.genero %></b></p></td>
+  </tr>
+  <tr>
+    <td><%= image_tag("star.png")%><span><b><%= @movie.nota %></b></span></td>
+  </tr>
+  <tr>
+    <td><p>Imdb ID: <b><%= @movie.imdb %></b></p></td>
+  </tr>
+  <tr>
+    <td><p>Mais informações: <%= link_to image_tag("imdb.png"), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank', class: 'imageWithLink' %></p></td>
+  </tr>
+  </tbody>
+</table>
