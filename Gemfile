@@ -46,7 +46,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :test do
+group :test, :development do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
@@ -60,12 +60,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'pry-rails'
-gem "bootstrap_form", ">= 4.2.0"
+gem 'bootstrap_form', '>= 4.2.0'
 gem 'cocoon'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'glyphicons-rails', '~> 0.1.2'
 gem 'select2-rails', '= 3.5.10'
-gem "httparty"
-gem "json_pure"
+gem 'httparty'
+gem 'json_pure'
 gem 'rails-i18n'
 gem 'figaro'
