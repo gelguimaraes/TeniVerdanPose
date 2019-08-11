@@ -38,11 +38,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'heroku.com',
-      user_name:            'teniverdanpose@gmail.com',
-      password:             'tvpsmtpvo9793',
+      domain:               ENV["GMAIL_DOMAIN"],
+      user_name:            ENV["GMAIL_USERNAME"],
+      password:             ENV["GMAIL_PASSWORD"],
       authentication:       'plain',
-      enable_starttls_auto: true }
+      enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

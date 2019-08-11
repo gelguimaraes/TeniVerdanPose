@@ -68,3 +68,4 @@ gem 'select2-rails', '= 3.5.10'
 gem "httparty"
 gem "json_pure"
 gem 'rails-i18n'
+gem 'figaro'

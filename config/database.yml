@@ -15,22 +15,26 @@ default: &default
   encoding: utf8
   #encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: postgres
-  password: postgres
-  host: localhost
+
 
 
 
 development:
   <<: *default
-  database: TeniverdanPose_development
+  database: <%= ENV['TENIVERDANPOSE_DATABASE_NAME'] %>
+  username: <%= ENV['TENIVERDANPOSE_DATABASE_USER'] %>
+  password: <%= ENV['TENIVERDANPOSE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['TENIVERDANPOSE_DATABASE_HOST'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: TeniverdanPose_test
+  database: <%= ENV['TENIVERDANPOSE_DATABASE_NAME'] %>
+  username: <%= ENV['TENIVERDANPOSE_DATABASE_USER'] %>
+  password: <%= ENV['TENIVERDANPOSE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['TENIVERDANPOSE_DATABASE_HOST'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -53,6 +57,7 @@ test:
 #
 production:
   <<: *default
-  database: TeniverdanPose_production
-  username: TeniverdanPose
+  database: <%= ENV['TENIVERDANPOSE_DATABASE_NAME'] %>
+  username: <%= ENV['TENIVERDANPOSE_DATABASE_USER'] %>
   password: <%= ENV['TENIVERDANPOSE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['TENIVERDANPOSE_DATABASE_HOST'] %>
