@@ -83,7 +83,7 @@ document.addEventListener("turbolinks:load", function(){
             dataType: 'json',
             ajax: {
                 url: '/moviessearch',
-                delay: 1000,
+                delay: 250,
                 data: function (search) {
 
                     var search = search .split(/\s+/);

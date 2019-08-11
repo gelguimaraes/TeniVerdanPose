@@ -1,10 +1,10 @@
 <h1>Seu amigo <%= @indicator.nome %> te indicou um Filme! </h1>
 
 <table>
-  <tbody align="left">
+  <tbody align="left" valign="middle">
   <tr>
-    <td rowspan="6" align="right">
-      <img src="<%= (@movie.poster != 'N/A') ? @movie.poster : image_url('movie.png') %>" class="imageView"/>
+    <td rowspan="7" align="right">
+      <img src="<%= (@movie.poster != 'N/A') ? @movie.poster :  @base_url + asset_url('movie.png') %>" class="imageView"/>
     </td>
     <td width="500px"><h2>Título: <%= @movie.titulo %></h2></td>
   </tr>
@@ -15,13 +15,18 @@
     <td><p>Gênero: <b><%= @movie.genero %></b></p></td>
   </tr>
   <tr>
-    <td><%= image_tag("star.png")%><span><b><%= @movie.nota %></b></span></td>
+    <td><img src="<%= @base_url + asset_url("star.png")%>"/><span> <b><%= @movie.nota %></b></span></td>
   </tr>
   <tr>
     <td><p>Imdb ID: <b><%= @movie.imdb %></b></p></td>
   </tr>
   <tr>
-    <td><p>Mais informações: <%= link_to image_tag("imdb.png"), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank', class: 'imageWithLink' %></p></td>
+    <td>Plataforma: <img src="<%= @base_url + asset_url(@plataforma.image)%>" width="20px" style="margin-right: 5px"/><span><b><%= @plataforma.nome %></b></span></td>
+  </tr>
+  <tr>
+    <td><p>Detalhes sobre o filme: <%= link_to image_tag(@base_url + asset_url("imdb.png")), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank', style: 'width: 60px;' %></p></td>
   </tr>
   </tbody>
 </table>
+
+<div style="margin: 50px auto; width: 300px"><img src="<%= @base_url + asset_url("teniverdan.png")%>" width="300px"/></div>
