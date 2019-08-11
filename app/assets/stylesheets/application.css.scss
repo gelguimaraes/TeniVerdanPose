@@ -16,11 +16,9 @@
 
 @font-face {
   font-family: 'caviar_dreamsregular';
-  src: url('caviardreams-webfont.woff2') format('woff2'),
-  url('caviardreams-webfont.woff') format('woff');
+  src: font-url('caviardreams-webfont.woff2') format('woff2'), font-url('caviardreams-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 *, p {
