@@ -77,7 +77,7 @@ document.addEventListener("turbolinks:load", function(){
     if ($('#search_movie')) {
         $('#search_movie').select2({
             theme: 'bootstrap',
-            placeholder: 'Ex.: spiderman 2008',
+            placeholder: 'Ex.: spider-man 2014',
             allowClear: true,
             minimumInputLength: 3,
             dataType: 'json',
