@@ -35,7 +35,7 @@ class IndicationsController < ApplicationController
     indicator = User.find(session[:user_id])
     movie = Movie.find(movie.id)
     plataform = Plataform.find(params[:indication][:plataform_id])
-    NewUserEmailMailer.mail_to_indicated(indicator, indicated, movie, plataform).deliver
+
 
     @indication = Indication.new(indication_params)
 
@@ -48,6 +48,7 @@ class IndicationsController < ApplicationController
         format.json { render json: @indication.errors, status: :unprocessable_entity }
       end
     end
+    NewUserEmailMailer.mail_to_indicated(indicator, indicated, movie, plataform).deliver
   end
 
   # PATCH/PUT /indications/1
