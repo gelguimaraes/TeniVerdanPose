@@ -1,5 +1,4 @@
 class NewUserEmailMailer < ApplicationMailer
-  default :from => @indicator.email
   def mail_to_indicated(indicator, indicated, movie, plataforma)
     @indicator = indicator
     @indicated = indicated
