@@ -24,7 +24,7 @@
     <td>Plataforma: <img src="<%= @base_url + asset_url(@plataforma.image)%>" width="20px" style="margin-right: 5px"/><span><b><%= @plataforma.nome %></b></span></td>
   </tr>
   <tr>
-    <td><p>Detalhes sobre o filme: <%= link_to image_tag(@base_url + asset_url("imdb.png")), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank', style: 'width: 60px;' %></p></td>
+    <td><p>Detalhes sobre o filme: <%= link_to image_tag(@base_url + asset_url("imdb.png"), style: 'width: 60px;'), "https://www.imdb.com/title/" + @movie.imdb, target: '_blank' %></p></td>
   </tr>
   </tbody>
 </table>
