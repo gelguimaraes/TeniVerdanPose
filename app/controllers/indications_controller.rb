@@ -30,17 +30,19 @@ class IndicationsController < ApplicationController
     if movie
       params[:indication][:movie_id] ||= movie.id
     end
+
+    indicated = User.find(params[:indication][:user_indicated_id])
+    indicator = User.find(session[:user_id])
+    movie = Movie.find(movie.id)
+    plataform = Plataform.find(params[:indication][:plataform_id])
+    NewUserEmailMailer.mail_to_indicated(indicator, indicated, movie, plataform).deliver
+
     @indication = Indication.new(indication_params)
 
     respond_to do |format|
       if @indication.save
         format.html { redirect_to @indication, notice: 'Parabéns pela Indicação!' }
         format.json { render :show, status: :created, location: @indication }
-        indicated = User.find(params[:indication][:user_indicated_id])
-        indicator = User.find(session[:user_id])
-        movie = Movie.find(movie.id)
-        plataform = Plataform.find(params[:indication][:plataform_id])
-        NewUserEmailMailer.mail_to_indicated(indicator, indicated, movie, plataform).deliver
       else
         format.html { render :new }
         format.json { render json: @indication.errors, status: :unprocessable_entity }
