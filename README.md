@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Grupê dê posérs qualificaduó que achám que entendiem cineman e não acharram un sistemam eficienté para dar suas opiniês qualificadês.
 
-Things you may want to cover:
+![alt text](https://teniverdanpose.herokuapp.com/assets/teniverdan-09a947a08196241108d5b41ca23e2a66a5a1e7f3f7054918d5879507e01d6f75.png)
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
