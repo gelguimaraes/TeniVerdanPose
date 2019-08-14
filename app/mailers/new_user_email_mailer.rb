@@ -6,7 +6,8 @@ class NewUserEmailMailer < ApplicationMailer
     @movie = movie
     @plataforma = plataforma
     @base_url = "https://teniverdanpose.herokuapp.com/"
-    mail(from: @indicator.email, to: @indicated.email,
+    indicator = "#{@indicator.nome} <#{@indicator.email}>"
+    mail(from: indicator, reply_to:indicator , to: @indicated.email,
          subject: ('Seu amigo ' + @indicator.nome + ' te indicou um filme' ))
   end
 end
